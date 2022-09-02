@@ -13,9 +13,9 @@ $(document).ready( function(){
         arrows: true,
         dots: true,
         centerMode: true,
+        centerPadding: '30px',
         slidesToScroll: 1,
         slidesToShow: 3,
-        centerPadding: '30px',
         infinite: true,
         appendDots: $('.slide-arrows-h'),
         appendArrows: $('.slide-arrows-h')
@@ -23,11 +23,22 @@ $(document).ready( function(){
     $('.feedback-slider').slick({
         arrows: true,
         dots: true,
-        centerMode: true,
-        focusOnSelect: true,
+        variableWidth: true,
         slidesToScroll: 1,
         slidesToShow: 2,
         appendDots: $('.slide-arrows-f'),
         appendArrows: $('.slide-arrows-f')
     })
+
+    function toggleOverlay(){
+        if($('.overlay').css('display') == 'none'){
+            $('.overlay').css({'display':'flex'})
+        }
+        else{
+            $('.overlay').css({'display':'none'})
+        }
+    }
+
+    $('.overlay > .feedback-slider__item').after().click(toggleOverlay)
+    $('.feedback-slider__btn').click(toggleOverlay)
 });
